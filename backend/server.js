@@ -5,6 +5,8 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import productRoutes from './routes/productRoutes.js';
 import { sql } from './config/db.js';
+
+
 dotenv.config();
  
 
@@ -15,10 +17,21 @@ const PORT = process.env.PORT || 3000;
 
 
 
+
 app.use(express.json());
 app.use(cors());
 app.use(helmet());
 app.use(morgan('dev'));
+
+// apply arcc jet rate limit for all routes 
+// app.use((req,res,next) =>{
+//     try {
+        
+//     } catch (error) {
+        
+//     }
+
+// });
 
 app.use('/api/products', productRoutes);
 
@@ -45,6 +58,9 @@ initDB().then(() => {
 
     app.listen(PORT, () => {
         console.log(`Server is running on port ${PORT}`);
-    
+    });
+}).catch((err) => {
+    console.error('Failed to initialize DB', err);
+    process.exit(1);
 });
-})
+

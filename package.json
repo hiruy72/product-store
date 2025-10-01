@@ -4,14 +4,15 @@
   "description": "",
   "main": "backend/server.js",
   "scripts": {    
-    "dev": "nodemon backend/server.js"
+    "dev": "nodemon backend/server.js",
+    "start": "node backend/server.js",
+    "serve-frontend": "npx http-server frontend -p 8080 -o"
   },
   "keywords": [],
   "author": "",
   "type": "module",
   "license": "ISC",
   "dependencies": {
-    "@arcjet/node": "^1.0.0-beta.12",
     "@neondatabase/serverless": "^1.0.1",
     "cors": "^2.8.5",
     "dotenv": "^17.2.2",
